@@ -14,26 +14,21 @@ import com.deliveryboy.service.KafkaService;
 @RestController
 @RequestMapping("/location")
 public class LocationController {
-	
+
 	@Autowired
 	private KafkaService kafkaService;
-	
+
 	@PostMapping("/test")
-	public ResponseEntity<?> test(){
-		
-		return new ResponseEntity<>(Map.of("Message","Test page loaded"),HttpStatus.OK);
+	public ResponseEntity<?> test() {
+		return new ResponseEntity<>(Map.of("Message", "Test page loaded"), HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/update")
-	public ResponseEntity<?> update(){
-		String location=Math.random()+"";
-		
-		
-		
+	public ResponseEntity<?> update() {
+		String location = Math.random() + "";
 		this.kafkaService.updateLocation(location);
-		
 		System.out.println("Location Updated");
-		return new ResponseEntity<>(Map.of("Message","Location Updated"),HttpStatus.OK);
+		return new ResponseEntity<>(Map.of("Message", "Location Updated by kafka producer"), HttpStatus.OK);
 	}
 
 }
