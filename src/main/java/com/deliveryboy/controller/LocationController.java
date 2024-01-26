@@ -18,6 +18,12 @@ public class LocationController {
 	@Autowired
 	private KafkaService kafkaService;
 	
+	@PostMapping("/test")
+	public ResponseEntity<?> test(){
+		
+		return new ResponseEntity<>(Map.of("Message","Test page loaded"),HttpStatus.OK);
+	}
+	
 	@PostMapping("/update")
 	public ResponseEntity<?> update(){
 		String location=Math.random()+"";
